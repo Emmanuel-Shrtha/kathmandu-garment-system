@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('bundles', function (Blueprint $table) {
             $table->id();
+            $table->integer('bundle_qty');
+            $table->string('qr_code')->unique();
+
+            $table->unsignedBigInteger('current_holder_worker_id')->nullable();
+            $table->timestamp('last_scanned_at')->nullable();
+
+            $table->unsignedBigInteger('parent_bundle_id')->nullable();
+            $table->tinyInteger('rework_level')->default(0);
+
             $table->timestamps();
         });
     }

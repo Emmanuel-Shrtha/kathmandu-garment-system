@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->id();
+            $table->string('biometric_pin')->unique();
+            $table->string('full_name');
+            $table->string('line')->nullable();
+            $table->boolean('active')->default(true);
+            $table->date('joined_at')->nullable();
             $table->timestamps();
         });
     }
